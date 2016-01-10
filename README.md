@@ -20,7 +20,7 @@ alt="devDependency status" height="18"/>
 alt="npm version" height="18">
 </a>
 
-whitespace module. A list of ES5 whitespaces, when `\s` doesn't cut it.
+whitespace module.
 
 <h2>ECMAScript compatibility shims for legacy JavaScript engines</h2>
 `es5-shim.js` monkey-patches a JavaScript context to contain all EcmaScript 5
@@ -39,21 +39,88 @@ es5-shim.js to be able to work properly.
 `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
 behave as closely as possible to ECMAScript 6 (Harmony).
 
-**Version**: 1.0.0  
+**Version**: 1.0.1  
 **Author:** Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
-<a name="exp_module_white-space-x--module.exports"></a>
-### `module.exports` : <code>string</code> ⏏
-A string of ES5 whitespaces.
 
-**Kind**: Exported member  
-**Default**: <code>&quot;&#x27;\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028\\u2029\\uFEFF&#x27;&quot;</code>  
+* [white-space-x](#module_white-space-x)
+    * [`module.exports([nonWhiteSpace], [escaped])`](#exp_module_white-space-x--module.exports) ⇒ <code>string</code> ⏏
+        * [`~whiteSpaces`](#module_white-space-x--module.exports..whiteSpaces) : <code>Array.&lt;number&gt;</code>
+        * [`~escape(string)`](#module_white-space-x--module.exports..escape) ⇒ <code>string</code>
+
+<a name="exp_module_white-space-x--module.exports"></a>
+### `module.exports([nonWhiteSpace], [escaped])` ⇒ <code>string</code> ⏏
+Generate a string of ES5 (non-)whitespaces, optionally escaped for use
+with `new RegExp`.
+
+**Kind**: Exported function  
+**Returns**: <code>string</code> - The generated string.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [nonWhiteSpace] | <code>boolean</code> | <code>false</code> | Generate a string of non-whitespaces. |
+| [escaped] | <code>boolean</code> | <code>false</code> | Generate an escaped string. |
+
 **Example**  
 ```js
-var whitespaces = require('white-space-x');
+var generateString = require('white-space-x');
+var ws = generateString();
+var nonWs = generateString(true);
 
-var re = new RegExp('^(a[' + wsRegexChars + ']*b$)');
-var str = 'a' + whitespaces + 'b';
-re.test(str); // true
+var re1 = new RegExp('^[' + generateString(false, true) + ']+$)');
+re1.test(ws); // true
+
+var re2 = new RegExp('[' + generateString(false, true) + ']$)');
+re2.test(nonWs); // false
 ```
+<a name="module_white-space-x--module.exports..whiteSpaces"></a>
+#### `module.exports~whiteSpaces` : <code>Array.&lt;number&gt;</code>
+An array of the whitespace char codes.
+
+**Kind**: inner property of <code>[module.exports](#exp_module_white-space-x--module.exports)</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| 0 | <code>number</code> | 0x0009 // Tab |
+| 1 | <code>number</code> | 0x000a // Line Feed |
+| 2 | <code>number</code> | 0x000b // Vertical Tab |
+| 3 | <code>number</code> | 0x000c // Form Feed |
+| 4 | <code>number</code> | 0x000d // Carriage Return |
+| 5 | <code>number</code> | 0x0020 // Space |
+| 6 | <code>number</code> | 0x00a0 // No-break space |
+| 7 | <code>number</code> | 0x1680 // Ogham space mark |
+| 8 | <code>number</code> | 0x180e // Mongolian vowel separator |
+| 9 | <code>number</code> | 0x2000 // En quad |
+| 10 | <code>number</code> | 0x2001 // Em quad |
+| 11 | <code>number</code> | 0x2002 // En space |
+| 12 | <code>number</code> | 0x2003 // Em space |
+| 13 | <code>number</code> | 0x2004 // Three-per-em space |
+| 14 | <code>number</code> | 0x2005 // Four-per-em space |
+| 15 | <code>number</code> | 0x2006 // Six-per-em space |
+| 16 | <code>number</code> | 0x2007 // Figure space |
+| 17 | <code>number</code> | 0x2008 // Punctuation space |
+| 18 | <code>number</code> | 0x2009 // Thin space |
+| 19 | <code>number</code> | 0x200a // Hair space |
+| 20 | <code>number</code> | 0x2028 // Line separator |
+| 21 | <code>number</code> | 0x2029 // Paragraph separator |
+| 22 | <code>number</code> | 0x202f // Narrow no-break space |
+| 23 | <code>number</code> | 0x205f // Medium mathematical space |
+| 24 | <code>number</code> | 0x3000 // Ideographic space |
+| 25 | <code>number</code> | 0xfeff // Byte Order Mark |
+
+<a name="module_white-space-x--module.exports..escape"></a>
+#### `module.exports~escape(string)` ⇒ <code>string</code>
+This method takes a string and puts a backslash in front of every
+character that is part of the regular expression syntax. This is useful
+if you have a run-time string that you need to match in some text and the
+string may contain special regex characters.
+
+**Kind**: inner method of <code>[module.exports](#exp_module_white-space-x--module.exports)</code>  
+**Returns**: <code>string</code> - The escaped string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| string | <code>string</code> | The string to be escaped. |
+
