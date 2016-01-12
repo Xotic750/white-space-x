@@ -3,8 +3,8 @@
 /*jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
-  es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:2,
-  maxstatements:18, maxcomplexity:3 */
+  es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:3,
+  maxstatements:13, maxcomplexity:3 */
 
 /*global JSON:true, expect, module, require, describe, it, returnExports */
 
@@ -68,9 +68,20 @@
       expect(generateString(true)).toBe(generateString(true));
     });
 
-    it('should be not equal', function () {
-      expect(generateString(true)).not.toBe(ws);
-      expect(generateString(true)).not.toBe(generateString());
+    it('should be equal', function () {
+      var re = new RegExp('[' + generateString() + ']', 'g');
+      expect((generateString() + generateString(true)).replace(re, ''))
+        .toEqual(generateString(true));
+      expect((generateString(true) + generateString()).replace(re, ''))
+        .toEqual(generateString(true));
+    });
+
+    it('should be equal', function () {
+      var re = new RegExp('[' + generateString(true, true) + ']', 'g');
+      expect((generateString() + generateString(true)).replace(re, ''))
+        .toEqual(generateString());
+      expect((generateString(true) + generateString()).replace(re, ''))
+        .toEqual(generateString());
     });
 
     it('should be `true`', function () {

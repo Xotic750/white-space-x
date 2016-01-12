@@ -39,7 +39,7 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -51,20 +51,16 @@
 /*jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
-  es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:4,
-  maxstatements:17, maxcomplexity:9 */
+  es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:2,
+  maxstatements:6, maxcomplexity:4 */
 
 /*global module */
 
 ;(function () {
   'use strict';
 
-  var ES = require('es-abstract/es6'),
-    defProp = require('define-property-x'),
+  var defProp = require('define-property-x'),
     escapeRx = require('regexp.escape'),
-    aReduce = Array.prototype.reduce,
-    aIndexOf = Array.prototype.indexOf,
-    fromCharCode = String.fromCharCode,
     whiteSpaces = [
       0x0009, // Tab
       0x000a, // Line Feed
@@ -95,7 +91,26 @@
       0x3000, // Ideographic space
       0xfeff // Byte Order Mark
     ],
-    cached = {};
+    c = {
+      s: whiteSpaces.reduce(function (acc, item) {
+          return acc + String.fromCharCode(item);
+        }, ''),
+
+      w: (function () {
+        var count = 65536,
+          str = '';
+        do {
+          count -= 1;
+          if (whiteSpaces.indexOf(count) < 0) {
+            str = String.fromCharCode(count) + str;
+          }
+        } while (count);
+        return str;
+      }())
+    };
+
+  c.se = (c.s + c.w).replace(/\s/g, '') !== c.w ? escapeRx(c.s) : '\\s';
+  c.we = (c.s + c.w).replace(/\w/g, '') !== c.s ? escapeRx(c.w) : '\\w';
 
   /**
    * Generate a string of ES5 (non-)whitespaces, optionally escaped for use
@@ -117,33 +132,10 @@
    * re2.test(nonWs); // false
    */
   module.exports = function generateString(nonWhiteSpace, escaped) {
-    var plain = nonWhiteSpace === true ? 'nws' : 'ws',
-      esc, count, str;
-    if (!cached[plain]) {
-      if (nonWhiteSpace === true) {
-        count = 65536;
-        str = '';
-        do {
-          count -= 1;
-          if (ES.Call(aIndexOf, whiteSpaces, [count]) < 0) {
-            str = fromCharCode(count) + str;
-          }
-        } while (count);
-      } else {
-        str = ES.Call(aReduce, whiteSpaces, [function (acc, item) {
-          return acc + fromCharCode(item);
-        }, '']);
-      }
-      cached[plain] = str;
+    if (nonWhiteSpace === true) {
+      return escaped === true ? c.we : c.w;
     }
-    if (escaped === true) {
-      esc = plain + 'e';
-      if (!cached[esc]) {
-        cached[esc] = escapeRx(cached[plain]);
-      }
-      return cached[esc];
-    }
-    return cached[plain];
+    return escaped === true ? c.se : c.s;
   };
 
   /**
