@@ -39,7 +39,7 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -52,16 +52,16 @@
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
   es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:2,
-  maxstatements:6, maxcomplexity:4 */
+  maxstatements:9, maxcomplexity:4 */
 
 /*global module */
 
 ;(function () {
   'use strict';
 
-  var defProp = require('define-property-x'),
-    escapeRx = require('regexp.escape'),
-    whiteSpaces = [
+  var defProp = require('define-property-x');
+  var escapeRx = require('regexp.escape');
+  var whiteSpaces = [
       0x0009, // Tab
       0x000a, // Line Feed
       0x000b, // Vertical Tab
@@ -90,8 +90,8 @@
       0x205f, // Medium mathematical space
       0x3000, // Ideographic space
       0xfeff // Byte Order Mark
-    ],
-    c = {
+    ];
+  var c = {
       s: whiteSpaces.reduce(function (acc, item) {
           return acc + String.fromCharCode(item);
         }, ''),
