@@ -39,7 +39,7 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -59,8 +59,8 @@
 ;(function () {
   'use strict';
 
-  var defProp = require('define-property-x');
-  var escapeRx = require('regexp.escape');
+  var defProp = require('define-properties-x').defineProperty;
+  var escapeRx = require('regexp-escape-x');
   var whiteSpaces = [
       0x0009, // Tab
       0x000a, // Line Feed
