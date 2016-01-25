@@ -1,6 +1,6 @@
 {
   "name": "white-space-x",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "whitespace module.",
   "homepage": "https://github.com/Xotic750/white-space-x",
   "author": {
@@ -30,14 +30,14 @@
     "url": "https://github.com/Xotic750/white-space-x/issues"
   },
   "dependencies": {
-    "define-properties-x": "^1.0.2",
-    "regexp-escape-x": "^1.0.1"
+    "define-properties-x": "^1.1.1",
+    "regexp-escape-x": "^1.0.2"
   },
   "devDependencies": {
     "es5-shim": "^4.5.0",
     "es6-shim": "^0.34.2",
     "json3": "^3.3.2",
-    "jscs": "^2.8.0",
+    "jscs": "^2.9.0",
     "uglify-js": "^2.6.1",
     "browserify": "^13.0.0",
     "browserify-derequire": "^0.9.4",

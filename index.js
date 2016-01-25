@@ -39,7 +39,7 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.6
+ * @version 1.0.7
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -59,7 +59,7 @@
 ;(function () {
   'use strict';
 
-  var defProp = require('define-properties-x').defineProperty;
+  var define = require('define-properties-x');
   var escapeRx = require('regexp-escape-x');
   var whiteSpaces = [
       0x0009, // Tab
@@ -170,7 +170,7 @@
    * @property {number} 24 0x3000 // Ideographic space
    * @property {number} 25 0xfeff // Byte Order Mark
    */
-  defProp(module.exports, 'whiteSpaces', whiteSpaces);
+  define.property(module.exports, 'whiteSpaces', whiteSpaces);
 
   /**
    * This method takes a string and puts a backslash in front of every
@@ -182,5 +182,5 @@
    * @param {string} string The string to be escaped.
    * @return {string} The escaped string.
    */
-  defProp(module.exports, 'escape', escapeRx);
+  define.property(module.exports, 'escape', escapeRx);
 }());
