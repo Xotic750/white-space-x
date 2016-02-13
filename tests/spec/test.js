@@ -4,14 +4,14 @@
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
   es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:3,
-  maxstatements:13, maxcomplexity:3 */
+  maxstatements:14, maxcomplexity:3 */
 
 /*global JSON:true, expect, module, require, describe, it, returnExports */
 
 (function () {
   'use strict';
 
-  var generateString, whiteSpaces, ws;
+  var lib;
   if (typeof module === 'object' && module.exports) {
     require('es5-shim');
     require('es5-shim/es5-sham');
@@ -20,12 +20,12 @@
     }
     require('json3').runInContext(null, JSON);
     require('es6-shim');
-    generateString = require('../../index.js');
+    lib = require('../../index.js');
   } else {
-    generateString = returnExports;
+    lib = returnExports;
   }
 
-  whiteSpaces = [
+  var whiteSpaces = [
     0x0009, // Tab
     0x000a, // Line Feed
     0x000b, // Vertical Tab
@@ -56,52 +56,58 @@
     0xfeff // Byte Order Mark
   ];
 
-  ws = whiteSpaces.reduce(function reducer(acc, item) {
+  var ws = whiteSpaces.reduce(function reducer(acc, item) {
     return acc + String.fromCharCode(item);
   }, '');
 
+  var nws = (function () {
+    var count = 0x110000,
+      str = '';
+    do {
+      count -= 1;
+      if (whiteSpaces.indexOf(count) < 0) {
+        str = String.fromCodePoint(count) + str;
+      }
+    } while (count);
+    return str;
+  }());
+
   describe('Basic tests', function () {
     it('should be equal', function () {
-      expect(generateString.whiteSpaces).toEqual(whiteSpaces);
-      expect(generateString()).toBe(ws);
-      expect(generateString()).toBe(generateString());
-      expect(generateString(true)).toBe(generateString(true));
+      expect(lib.whiteSpaces).toEqual(whiteSpaces);
+      expect(lib.ws).toBe(ws);
     });
 
     it('should be equal', function () {
-      var re = new RegExp('[' + generateString() + ']', 'g');
-      expect((generateString() + generateString(true)).replace(re, ''))
-        .toEqual(generateString(true));
-      expect((generateString(true) + generateString()).replace(re, ''))
-        .toEqual(generateString(true));
+      var re = new RegExp('[' + lib.ws + ']', 'g');
+      expect((ws + nws).replace(re, '')).toEqual(nws);
+      expect((nws + ws).replace(re, '')).toEqual(nws);
     });
 
     it('should be equal', function () {
-      var re = new RegExp('[' + generateString(true, true) + ']', 'g');
-      expect((generateString() + generateString(true)).replace(re, ''))
-        .toEqual(generateString());
-      expect((generateString(true) + generateString()).replace(re, ''))
-        .toEqual(generateString());
+      var re = new RegExp('[^' + lib.ws + ']', 'g');
+      expect((ws + nws).replace(re, '')).toEqual(ws);
+      expect((nws + ws).replace(re, '')).toEqual(ws);
     });
 
     it('should be `true`', function () {
-      var re = new RegExp('^[' + generateString(false, true) + ']+$');
-      expect(re.test(generateString())).toBe(true);
+      var re = new RegExp('^[' + lib.ws + ']+$');
+      expect(re.test(ws)).toBe(true);
     });
 
     it('should be `false`', function () {
-      var re = new RegExp('[' + generateString(false, true) + ']');
-      expect(re.test(generateString(true))).toBe(false);
+      var re = new RegExp('[' + lib.ws + ']');
+      expect(re.test(nws)).toBe(false);
     });
 
     it('should be `true`', function () {
-      var re = new RegExp('^[' + generateString(true, true) + ']+$');
-      expect(re.test(generateString(true))).toBe(true);
+      var re = new RegExp('^[^' + lib.ws + ']+$');
+      expect(re.test(nws)).toBe(true);
     });
 
     it('should be `false`', function () {
-      var re = new RegExp('[' + generateString(true, true) + ']');
-      expect(re.test(generateString())).toBe(false);
+      var re = new RegExp('[^' + lib.ws + ']');
+      expect(re.test(ws)).toBe(false);
     });
   });
 }());

@@ -39,7 +39,7 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.8
+ * @version 1.0.9
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -52,7 +52,7 @@
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
   es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:2,
-  maxstatements:9, maxcomplexity:4 */
+  maxstatements:12, maxcomplexity:4 */
 
 /*global module */
 
@@ -60,83 +60,6 @@
   'use strict';
 
   var define = require('define-properties-x');
-  var escapeRx = require('regexp-escape-x');
-  var whiteSpaces = [
-      0x0009, // Tab
-      0x000a, // Line Feed
-      0x000b, // Vertical Tab
-      0x000c, // Form Feed
-      0x000d, // Carriage Return
-      0x0020, // Space
-      //0x0085, // Next line - Not ES5 whitespace
-      0x00a0, // No-break space
-      0x1680, // Ogham space mark
-      0x180e, // Mongolian vowel separator
-      0x2000, // En quad
-      0x2001, // Em quad
-      0x2002, // En space
-      0x2003, // Em space
-      0x2004, // Three-per-em space
-      0x2005, // Four-per-em space
-      0x2006, // Six-per-em space
-      0x2007, // Figure space
-      0x2008, // Punctuation space
-      0x2009, // Thin space
-      0x200a, // Hair space
-      //0x200b, // Zero width space - Not ES5 whitespace
-      0x2028, // Line separator
-      0x2029, // Paragraph separator
-      0x202f, // Narrow no-break space
-      0x205f, // Medium mathematical space
-      0x3000, // Ideographic space
-      0xfeff // Byte Order Mark
-    ];
-  var c = {
-      s: whiteSpaces.reduce(function (acc, item) {
-          return acc + String.fromCharCode(item);
-        }, ''),
-
-      w: (function () {
-        var count = 65536,
-          str = '';
-        do {
-          count -= 1;
-          if (whiteSpaces.indexOf(count) < 0) {
-            str = String.fromCharCode(count) + str;
-          }
-        } while (count);
-        return str;
-      }())
-    };
-
-  c.se = (c.s + c.w).replace(/\s/g, '') !== c.w ? escapeRx(c.s) : '\\s';
-  c.we = (c.s + c.w).replace(/\w/g, '') !== c.s ? escapeRx(c.w) : '\\w';
-
-  /**
-   * Generate a string of ES5 (non-)whitespaces, optionally escaped for use
-   * with `new RegExp`.
-   *
-   * @param {boolean} [nonWhiteSpace=false] Generate a string of
-   * non-whitespaces.
-   * @param {boolean} [escaped=false] Generate an escaped string.
-   * @return {string} The generated string.
-   * @example
-   * var generateString = require('white-space-x');
-   * var ws = generateString();
-   * var nonWs = generateString(true);
-   *
-   * var re1 = new RegExp('^[' + generateString(false, true) + ']+$)');
-   * re1.test(ws); // true
-   *
-   * var re2 = new RegExp('[' + generateString(false, true) + ']$)');
-   * re2.test(nonWs); // false
-   */
-  module.exports = function generateString(nonWhiteSpace, escaped) {
-    if (nonWhiteSpace === true) {
-      return escaped === true ? c.we : c.w;
-    }
-    return escaped === true ? c.se : c.s;
-  };
 
   /**
    * An array of the whitespace char codes.
@@ -169,18 +92,62 @@
    * @property {number} 23 0x205f // Medium mathematical space
    * @property {number} 24 0x3000 // Ideographic space
    * @property {number} 25 0xfeff // Byte Order Mark
+   * @example
+   * var lib = require('white-space-x');
+   * var count = 0x110000;
+   * var nws = ''; // A string of all the non-whitepaces
+   * do {
+   *   count -= 1;
+   *   if (lib.whiteSpaces.indexOf(count) < 0) {
+   *     nws = String.fromCodePoint(count) + nws;
+   *   }
+   * } while (count);
    */
-  define.property(module.exports, 'whiteSpaces', whiteSpaces);
+  define.property(module.exports, 'whiteSpaces', [
+    0x0009, // Tab
+    0x000a, // Line Feed
+    0x000b, // Vertical Tab
+    0x000c, // Form Feed
+    0x000d, // Carriage Return
+    0x0020, // Space
+    //0x0085, // Next line - Not ES5 whitespace
+    0x00a0, // No-break space
+    0x1680, // Ogham space mark
+    0x180e, // Mongolian vowel separator
+    0x2000, // En quad
+    0x2001, // Em quad
+    0x2002, // En space
+    0x2003, // Em space
+    0x2004, // Three-per-em space
+    0x2005, // Four-per-em space
+    0x2006, // Six-per-em space
+    0x2007, // Figure space
+    0x2008, // Punctuation space
+    0x2009, // Thin space
+    0x200a, // Hair space
+    //0x200b, // Zero width space - Not ES5 whitespace
+    0x2028, // Line separator
+    0x2029, // Paragraph separator
+    0x202f, // Narrow no-break space
+    0x205f, // Medium mathematical space
+    0x3000, // Ideographic space
+    0xfeff // Byte Order Mark
+  ]);
 
   /**
-   * This method takes a string and puts a backslash in front of every
-   * character that is part of the regular expression syntax. This is useful
-   * if you have a run-time string that you need to match in some text and the
-   * string may contain special regex characters.
+   * A string of the whitespace characters.
    *
-   * @function escape
-   * @param {string} string The string to be escaped.
-   * @return {string} The escaped string.
+   * @name ws
+   * @type string
+   * @default \u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff
+   * @example
+   * var lib = require('white-space-x');
+   * var ws = '\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff';
+   * var re1 = new RegExp('^[' + lib.ws + ']+$)');
+   * re1.test(ws); // true
    */
-  define.property(module.exports, 'escape', escapeRx);
+  define.property(module.exports, 'ws', module.exports.whiteSpaces.reduce(function (acc, item) {
+      return acc + String.fromCharCode(item);
+    }, '')
+  );
 }());

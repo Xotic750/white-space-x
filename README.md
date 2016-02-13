@@ -39,46 +39,20 @@ es5-shim.js to be able to work properly.
 `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
 behave as closely as possible to ECMAScript 6 (Harmony).
 
-**Version**: 1.0.8  
+**Version**: 1.0.9  
 **Author:** Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
 
 * [white-space-x](#module_white-space-x)
-    * [`module.exports([nonWhiteSpace], [escaped])`](#exp_module_white-space-x--module.exports) ⇒ <code>string</code> ⏏
-        * [`~whiteSpaces`](#module_white-space-x--module.exports..whiteSpaces) : <code>Array.&lt;number&gt;</code>
-        * [`~escape(string)`](#module_white-space-x--module.exports..escape) ⇒ <code>string</code>
+    * [`~whiteSpaces`](#module_white-space-x..whiteSpaces) : <code>Array.&lt;number&gt;</code>
+    * [`~ws`](#module_white-space-x..ws) : <code>string</code>
 
-<a name="exp_module_white-space-x--module.exports"></a>
-### `module.exports([nonWhiteSpace], [escaped])` ⇒ <code>string</code> ⏏
-Generate a string of ES5 (non-)whitespaces, optionally escaped for use
-with `new RegExp`.
-
-**Kind**: Exported function  
-**Returns**: <code>string</code> - The generated string.  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [nonWhiteSpace] | <code>boolean</code> | <code>false</code> | Generate a string of non-whitespaces. |
-| [escaped] | <code>boolean</code> | <code>false</code> | Generate an escaped string. |
-
-**Example**  
-```js
-var generateString = require('white-space-x');
-var ws = generateString();
-var nonWs = generateString(true);
-
-var re1 = new RegExp('^[' + generateString(false, true) + ']+$)');
-re1.test(ws); // true
-
-var re2 = new RegExp('[' + generateString(false, true) + ']$)');
-re2.test(nonWs); // false
-```
-<a name="module_white-space-x--module.exports..whiteSpaces"></a>
-#### `module.exports~whiteSpaces` : <code>Array.&lt;number&gt;</code>
+<a name="module_white-space-x..whiteSpaces"></a>
+### `white-space-x~whiteSpaces` : <code>Array.&lt;number&gt;</code>
 An array of the whitespace char codes.
 
-**Kind**: inner property of <code>[module.exports](#exp_module_white-space-x--module.exports)</code>  
+**Kind**: inner property of <code>[white-space-x](#module_white-space-x)</code>  
 **Properties**
 
 | Name | Type | Description |
@@ -110,17 +84,28 @@ An array of the whitespace char codes.
 | 24 | <code>number</code> | 0x3000 // Ideographic space |
 | 25 | <code>number</code> | 0xfeff // Byte Order Mark |
 
-<a name="module_white-space-x--module.exports..escape"></a>
-#### `module.exports~escape(string)` ⇒ <code>string</code>
-This method takes a string and puts a backslash in front of every
-character that is part of the regular expression syntax. This is useful
-if you have a run-time string that you need to match in some text and the
-string may contain special regex characters.
+**Example**  
+```js
+var lib = require('white-space-x');
+var count = 0x110000;
+var nws = ''; // A string of all the non-whitepaces
+do {
+  count -= 1;
+  if (lib.whiteSpaces.indexOf(count) < 0) {
+    nws = String.fromCodePoint(count) + nws;
+  }
+} while (count);
+```
+<a name="module_white-space-x..ws"></a>
+### `white-space-x~ws` : <code>string</code>
+A string of the whitespace characters.
 
-**Kind**: inner method of <code>[module.exports](#exp_module_white-space-x--module.exports)</code>  
-**Returns**: <code>string</code> - The escaped string.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| string | <code>string</code> | The string to be escaped. |
-
+**Kind**: inner property of <code>[white-space-x](#module_white-space-x)</code>  
+**Default**: <code>&quot;\\u0009\\u000a\\u000b\\u000c\\u000d\\u0020\\u00a0\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff&quot;</code>  
+**Example**  
+```js
+var lib = require('white-space-x');
+var ws = '\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff';
+var re1 = new RegExp('^[' + lib.ws + ']+$)');
+re1.test(ws); // true
+```
