@@ -1,4 +1,5 @@
 <a name="module_white-space-x"></a>
+
 ## white-space-x
 <a href="https://travis-ci.org/Xotic750/white-space-x"
 title="Travis status">
@@ -39,7 +40,7 @@ es5-shim.js to be able to work properly.
 `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
 behave as closely as possible to ECMAScript 6 (Harmony).
 
-**Version**: 1.0.10  
+**Version**: 1.1.0  
 **Author:** Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
@@ -49,6 +50,7 @@ behave as closely as possible to ECMAScript 6 (Harmony).
     * [`~ws`](#module_white-space-x..ws) : <code>string</code>
 
 <a name="module_white-space-x..whiteSpaces"></a>
+
 ### `white-space-x~whiteSpaces` : <code>Array.&lt;number&gt;</code>
 An array of the whitespace char codes.
 
@@ -97,6 +99,7 @@ do {
 } while (count);
 ```
 <a name="module_white-space-x..ws"></a>
+
 ### `white-space-x~ws` : <code>string</code>
 A string of the whitespace characters.
 

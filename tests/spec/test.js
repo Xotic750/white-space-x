@@ -1,14 +1,18 @@
-/*jslint maxlen:80, es6:false, white:true */
+/* jslint maxlen:80, es6:true, white:true */
 
-/*jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
-  freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
-  nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
-  es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:3,
-  maxstatements:14, maxcomplexity:3 */
+/* jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
+   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
+   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
+   es3:false, esnext:true, plusplus:true, maxparams:1, maxdepth:2,
+   maxstatements:12, maxcomplexity:4 */
 
-/*global JSON:true, expect, module, require, describe, it, returnExports */
+/* eslint strict: 1, max-lines: 1, symbol-description: 1, max-nested-callbacks: 1,
+   max-statements: 1 */
 
-(function () {
+/* global JSON:true, expect, module, require, describe, it, returnExports */
+
+;(function () { // eslint-disable-line no-extra-semi
+
   'use strict';
 
   var lib;
@@ -32,7 +36,7 @@
     0x000c, // Form Feed
     0x000d, // Carriage Return
     0x0020, // Space
-    //0x0085, // Next line - Not ES5 whitespace
+    // 0x0085, // Next line - Not ES5 whitespace
     0x00a0, // No-break space
     0x1680, // Ogham space mark
     0x180e, // Mongolian vowel separator
@@ -47,7 +51,7 @@
     0x2008, // Punctuation space
     0x2009, // Thin space
     0x200a, // Hair space
-    //0x200b, // Zero width space - Not ES5 whitespace
+    // 0x200b, // Zero width space - Not ES5 whitespace
     0x2028, // Line separator
     0x2029, // Paragraph separator
     0x202f, // Narrow no-break space
