@@ -1,6 +1,6 @@
 /**
  * @file List of ECMAScript5 white space characters.
- * @version 2.0.1
+ * @version 2.0.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -8,8 +8,6 @@
  */
 
 'use strict';
-
-var forEach = require('array-for-each-x');
 
 /**
  * An array of the ES5 whitespace char codes, string, and their descriptions.
@@ -170,9 +168,10 @@ var list = [
 ];
 
 var string = '';
-forEach(list, function reducer(item) {
-  string += item.string;
-});
+var length = list.length;
+for (var i = 0; i < length; i += 1) {
+  string += list[i].string;
+}
 
 /**
  * A string of the ES5 whitespace characters.
