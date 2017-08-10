@@ -1,6 +1,6 @@
 {
   "name": "white-space-x",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "List of ECMAScript5 white space characters.",
   "homepage": "https://github.com/Xotic750/white-space-x",
   "author": {
@@ -30,7 +30,7 @@
     "url": "https://github.com/Xotic750/white-space-x/issues"
   },
   "dependencies": {
-    "for-each": "^0.3.2"
+    "array-for-each-x": "^1.0.2"
   },
   "devDependencies": {
     "@xotic750/eslint-config-standard-x": "^2.2.1",
