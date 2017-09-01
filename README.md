@@ -23,7 +23,7 @@
 ## white-space-x
 List of ECMAScript5 white space characters.
 
-**Version**: 2.0.2  
+**Version**: 2.0.3  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
