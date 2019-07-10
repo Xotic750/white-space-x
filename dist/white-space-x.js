@@ -1,13 +1,13 @@
 /*!
 {
   "copywrite": "Copyright (c) 2015-present",
-  "date": "2019-07-10T21:13:08.444Z",
+  "date": "2019-07-10T22:27:27.494Z",
   "describe": "",
   "description": "List of ECMAScript white space characters.",
   "file": "white-space-x.js",
-  "hash": "948f0cfc95f9191727c8",
+  "hash": "45890877b0998db75791",
   "license": "MIT",
-  "version": "4.0.0"
+  "version": "4.0.1"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -132,7 +132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.string2018 = exports.string2017 = exports.string2016 = exports.string2015 = exports.string5 = exports.string = exports.list = void 0;
+exports.string2016 = exports.default = exports.list = void 0;
 
 /**
  * A record of a white space character.
@@ -442,18 +442,11 @@ for (var i = 0; i < length; i += 1) {
   }
 }
 
-var string = stringES2018;
-exports.string = string;
-var string5 = stringES2016;
-exports.string5 = string5;
-var string2015 = stringES2016;
-exports.string2015 = string2015;
+var string2018 = stringES2018;
+var _default = string2018;
+exports.default = _default;
 var string2016 = stringES2016;
 exports.string2016 = string2016;
-var string2017 = stringES2018;
-exports.string2017 = string2017;
-var string2018 = stringES2018;
-exports.string2018 = string2018;
 
 /***/ })
 /******/ ]);

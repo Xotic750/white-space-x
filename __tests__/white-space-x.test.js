@@ -1,4 +1,4 @@
-import * as whiteSpace from 'src/white-space-x';
+import whiteSpace, {list as whiteSpaceList, string2016 as whiteSpace2016} from 'src/white-space-x';
 
 const list = [
   {
@@ -315,59 +315,54 @@ const nonWhiteSpaceStr = new Array(0xfeff).fill().reduce(function(str, u, index)
 describe('basic tests', function() {
   it('lists should be equal', function() {
     expect.assertions(1);
-    expect(whiteSpace.list).toStrictEqual(list);
+    expect(whiteSpaceList).toStrictEqual(list);
   });
 
   it('es2016 string should be correct', function() {
     expect.assertions(1);
-    expect(whiteSpace.string2016).toBe(string2016);
-  });
-
-  it('es2018 string should be correct', function() {
-    expect.assertions(1);
-    expect(whiteSpace.string2018).toBe(string2018);
+    expect(whiteSpace2016).toBe(string2016);
   });
 
   it('string should be es2018', function() {
     expect.assertions(1);
-    expect(whiteSpace.string).toBe(string2018);
+    expect(whiteSpace).toBe(string2018);
   });
 
   it('should be equal 1', function() {
     expect.assertions(2);
-    const re = new RegExp(`[${whiteSpace.string}]`, 'g');
-    expect((whiteSpace.string + nonWhiteSpaceStr).replace(re, '')).toBe(nonWhiteSpaceStr);
-    expect((nonWhiteSpaceStr + whiteSpace.string).replace(re, '')).toBe(nonWhiteSpaceStr);
+    const re = new RegExp(`[${whiteSpace}]`, 'g');
+    expect((whiteSpace + nonWhiteSpaceStr).replace(re, '')).toBe(nonWhiteSpaceStr);
+    expect((nonWhiteSpaceStr + whiteSpace).replace(re, '')).toBe(nonWhiteSpaceStr);
   });
 
   it('should be equal 2', function() {
     expect.assertions(2);
-    const re = new RegExp(`[^${whiteSpace.string}]`, 'g');
-    expect((whiteSpace.string + nonWhiteSpaceStr).replace(re, '')).toBe(string2018);
-    expect((nonWhiteSpaceStr + whiteSpace.string).replace(re, '')).toBe(string2018);
+    const re = new RegExp(`[^${whiteSpace}]`, 'g');
+    expect((whiteSpace + nonWhiteSpaceStr).replace(re, '')).toBe(string2018);
+    expect((nonWhiteSpaceStr + whiteSpace).replace(re, '')).toBe(string2018);
   });
 
   it('should be `true` 1', function() {
     expect.assertions(1);
-    const re = new RegExp(`^[${whiteSpace.string}]+$`);
+    const re = new RegExp(`^[${whiteSpace}]+$`);
     expect(re.test(string2018)).toBe(true);
   });
 
   it('should be `false` 1', function() {
     expect.assertions(1);
-    const re = new RegExp(`[${whiteSpace.string}]`);
+    const re = new RegExp(`[${whiteSpace}]`);
     expect(re.test(nonWhiteSpaceStr)).toBe(false);
   });
 
   it('should be `true` 2', function() {
     expect.assertions(1);
-    const re = new RegExp(`^[^${whiteSpace.string}]+$`);
+    const re = new RegExp(`^[^${whiteSpace}]+$`);
     expect(re.test(nonWhiteSpaceStr)).toBe(true);
   });
 
   it('should be `false` 2', function() {
     expect.assertions(1);
-    const re = new RegExp(`[^${whiteSpace.string}]`);
+    const re = new RegExp(`[^${whiteSpace}]`);
     expect(re.test(string2018)).toBe(false);
   });
 });

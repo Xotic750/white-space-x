@@ -22,17 +22,55 @@
 
 ## white-space-x
 
+### `module.exports` : <code>string</code> ⏏
+
 List of ECMAScript white space characters.
+
+**Kind**: Exported member
+**Example**
+
+```js
+import whiteSpace from 'white-space-x';
+whiteSpaces.list.foreach(function(item) {
+  console.log(item.description, item.code, item.string);
+});
+
+const characters = [
+  '\u0009',
+  '\u000a',
+  '\u000b',
+  '\u000c',
+  '\u000d',
+  '\u0020',
+  '\u00a0',
+  '\u1680',
+  '\u2000',
+  '\u2001',
+  '\u2002',
+  '\u2003',
+  '\u2004',
+  '\u2005',
+  '\u2006',
+  '\u2007',
+  '\u2008',
+  '\u2009',
+  '\u200a',
+  '\u2028',
+  '\u2029',
+  '\u202f',
+  '\u205f',
+  '\u3000',
+  '\ufeff',
+];
+const ws = characters.join('');
+const re1 = new RegExp('^[' + whiteSpace + ']+$)');
+console.log(re1.test(ws)); // true
+```
 
 - [white-space-x](#module_white-space-x)
   - _static_
     - [`.list`](#module_white-space-x.list) : <code>Array.&lt;CharRecord&gt;</code>
-    - [`.string`](#module_white-space-x.string) : <code>string</code>
-    - [`.string5`](#module_white-space-x.string5) : <code>string</code>
-    - [`.string2015`](#module_white-space-x.string2015) : <code>string</code>
     - [`.string2016`](#module_white-space-x.string2016) : <code>string</code>
-    - [`.string2017`](#module_white-space-x.string2017) : <code>string</code>
-    - [`.string2018`](#module_white-space-x.string2018) : <code>string</code>
   - _inner_
     - [`~CharRecord`](#module_white-space-x..CharRecord) : <code>Object</code>
 
@@ -43,48 +81,18 @@ List of ECMAScript white space characters.
 An array of the whitespace char codes, string, descriptions and language
 presence in the specifications.
 
-**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
-**Example**
-
-```js
-import * as whiteSpace from 'white-space-x';
-whiteSpaces.list.foreach(function(item) {
-  console.log(lib.description, item.code, item.string);
-});
-```
-
-<a name="module_white-space-x.string"></a>
-
-### `white-space-x.string` : <code>string</code>
-
-A string of the ES2017 to ES2018 whitespace characters.
-
-**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
-<a name="module_white-space-x.string5"></a>
-
-### `white-space-x.string5` : <code>string</code>
-
-A string of the ES5 to ES2016 whitespace characters.
-
-**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
-<a name="module_white-space-x.string2015"></a>
-
-### `white-space-x.string2015` : <code>string</code>
-
-A string of the ES5 to ES2016 whitespace characters.
-
-**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
+**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)
 <a name="module_white-space-x.string2016"></a>
 
 ### `white-space-x.string2016` : <code>string</code>
 
 A string of the ES5 to ES2016 whitespace characters.
 
-**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
+**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)
 **Example**
 
 ```js
-import * as whiteSpace from 'white-space-x';
+import {string2016 as whiteSpace2016} from 'white-space-x';
 const characters = [
   '\u0009',
   '\u000a',
@@ -114,7 +122,7 @@ const characters = [
   '\ufeff',
 ];
 const ws = characters.join('');
-const re1 = new RegExp('^[' + whiteSpace.string2016 + ']+$)');
+const re1 = new RegExp('^[' + whiteSpace2016 + ']+$)');
 console.log(re1.test(ws)); // true
 ```
 
@@ -126,47 +134,6 @@ A string of the ES2017 to ES2018 whitespace characters.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
 <a name="module_white-space-x.string2018"></a>
-
-### `white-space-x.string2018` : <code>string</code>
-
-A string of the ES2017 to ES2018 whitespace characters.
-
-**Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
-**Example**
-
-```js
-import * as whiteSpace from 'white-space-x';
-const characters = [
-  '\u0009',
-  '\u000a',
-  '\u000b',
-  '\u000c',
-  '\u000d',
-  '\u0020',
-  '\u00a0',
-  '\u1680',
-  '\u2000',
-  '\u2001',
-  '\u2002',
-  '\u2003',
-  '\u2004',
-  '\u2005',
-  '\u2006',
-  '\u2007',
-  '\u2008',
-  '\u2009',
-  '\u200a',
-  '\u2028',
-  '\u2029',
-  '\u202f',
-  '\u205f',
-  '\u3000',
-  '\ufeff',
-];
-const ws = characters.join('');
-const re1 = new RegExp('^[' + whiteSpace.string2018 + ']+$)');
-console.log(re1.test(ws)); // true
-```
 
 <a name="module_white-space-x..CharRecord"></a>
 

@@ -329,9 +329,7 @@ for (let i = 0; i < length; i += 1) {
   }
 }
 
-export const string = stringES2018;
-export const string5 = stringES2016;
-export const string2015 = stringES2016;
+const string2018 = stringES2018;
+
+export default string2018;
 export const string2016 = stringES2016;
-export const string2017 = stringES2018;
-export const string2018 = stringES2018;
