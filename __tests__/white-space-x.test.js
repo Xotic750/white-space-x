@@ -1,27 +1,6 @@
-'use strict';
+import * as whiteSpace from 'src/white-space-x';
 
-var whiteSpace;
-if (typeof module === 'object' && module.exports) {
-  require('es5-shim');
-  require('es5-shim/es5-sham');
-  if (typeof JSON === 'undefined') {
-    JSON = {};
-  }
-  require('json3').runInContext(null, JSON);
-  require('es6-shim');
-  var es7 = require('es7-shim');
-  Object.keys(es7).forEach(function (key) {
-    var obj = es7[key];
-    if (typeof obj.shim === 'function') {
-      obj.shim();
-    }
-  });
-  whiteSpace = require('../../index.js');
-} else {
-  whiteSpace = returnExports;
-}
-
-var list = [
+const list = [
   {
     code: 0x0009,
     description: 'Tab',
@@ -30,7 +9,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u0009'
+    string: '\u0009',
   },
   {
     code: 0x000a,
@@ -40,7 +19,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000a'
+    string: '\u000a',
   },
   {
     code: 0x000b,
@@ -50,7 +29,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000b'
+    string: '\u000b',
   },
   {
     code: 0x000c,
@@ -60,7 +39,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000c'
+    string: '\u000c',
   },
   {
     code: 0x000d,
@@ -70,7 +49,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000d'
+    string: '\u000d',
   },
   {
     code: 0x0020,
@@ -80,7 +59,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u0020'
+    string: '\u0020',
   },
   /*
   {
@@ -102,7 +81,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u00a0'
+    string: '\u00a0',
   },
   {
     code: 0x1680,
@@ -112,7 +91,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u1680'
+    string: '\u1680',
   },
   {
     code: 0x180e,
@@ -122,7 +101,7 @@ var list = [
     es2016: true,
     es2017: false,
     es2018: false,
-    string: '\u180e'
+    string: '\u180e',
   },
   {
     code: 0x2000,
@@ -132,7 +111,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2000'
+    string: '\u2000',
   },
   {
     code: 0x2001,
@@ -142,7 +121,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2001'
+    string: '\u2001',
   },
   {
     code: 0x2002,
@@ -152,7 +131,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2002'
+    string: '\u2002',
   },
   {
     code: 0x2003,
@@ -162,7 +141,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2003'
+    string: '\u2003',
   },
   {
     code: 0x2004,
@@ -172,7 +151,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2004'
+    string: '\u2004',
   },
   {
     code: 0x2005,
@@ -182,7 +161,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2005'
+    string: '\u2005',
   },
   {
     code: 0x2006,
@@ -192,7 +171,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2006'
+    string: '\u2006',
   },
   {
     code: 0x2007,
@@ -202,7 +181,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2007'
+    string: '\u2007',
   },
   {
     code: 0x2008,
@@ -212,7 +191,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2008'
+    string: '\u2008',
   },
   {
     code: 0x2009,
@@ -222,7 +201,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2009'
+    string: '\u2009',
   },
   {
     code: 0x200a,
@@ -232,7 +211,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u200a'
+    string: '\u200a',
   },
   /*
   {
@@ -254,7 +233,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2028'
+    string: '\u2028',
   },
   {
     code: 0x2029,
@@ -264,7 +243,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2029'
+    string: '\u2029',
   },
   {
     code: 0x202f,
@@ -274,7 +253,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u202f'
+    string: '\u202f',
   },
   {
     code: 0x205f,
@@ -284,7 +263,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u205f'
+    string: '\u205f',
   },
   {
     code: 0x3000,
@@ -294,7 +273,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u3000'
+    string: '\u3000',
   },
   {
     code: 0xfeff,
@@ -304,11 +283,11 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\ufeff'
-  }
+    string: '\ufeff',
+  },
 ];
 
-var string2016 = list.reduce(function (acc, item) {
+const string2016 = list.reduce(function(acc, item) {
   if (item.es2016) {
     return acc + String.fromCharCode(item.code);
   }
@@ -316,7 +295,7 @@ var string2016 = list.reduce(function (acc, item) {
   return acc;
 }, '');
 
-var string2018 = list.reduce(function (acc, item) {
+const string2018 = list.reduce(function(acc, item) {
   if (item.es2018) {
     return acc + String.fromCharCode(item.code);
   }
@@ -324,60 +303,71 @@ var string2018 = list.reduce(function (acc, item) {
   return acc;
 }, '');
 
-var nonWhiteSpaceStr = new Array(0xfeff).fill().reduce(function (str, u, index) {
-  var includes = function _includes(item) {
+const nonWhiteSpaceStr = new Array(0xfeff).fill().reduce(function(str, u, index) {
+  const includes = function _includes(item) {
     return item.code === index;
   };
 
+  /* eslint-disable-next-line compat/compat */
   return list.some(includes) ? str : str + String.fromCodePoint(index);
 }, '');
 
-describe('Basic tests', function () {
-  it('lists should be equal', function () {
-    expect(whiteSpace.list).toEqual(list);
+describe('basic tests', function() {
+  it('lists should be equal', function() {
+    expect.assertions(1);
+    expect(whiteSpace.list).toStrictEqual(list);
   });
 
-  it('es2016 string should be correct', function () {
+  it('es2016 string should be correct', function() {
+    expect.assertions(1);
     expect(whiteSpace.string2016).toBe(string2016);
   });
 
-  it('es2018 string should be correct', function () {
+  it('es2018 string should be correct', function() {
+    expect.assertions(1);
     expect(whiteSpace.string2018).toBe(string2018);
   });
 
-  it('string should be es2018', function () {
+  it('string should be es2018', function() {
+    expect.assertions(1);
     expect(whiteSpace.string).toBe(string2018);
   });
 
-  it('should be equal', function () {
-    var re = new RegExp('[' + whiteSpace.string + ']', 'g');
+  it('should be equal 1', function() {
+    expect.assertions(2);
+    const re = new RegExp(`[${whiteSpace.string}]`, 'g');
     expect((whiteSpace.string + nonWhiteSpaceStr).replace(re, '')).toBe(nonWhiteSpaceStr);
     expect((nonWhiteSpaceStr + whiteSpace.string).replace(re, '')).toBe(nonWhiteSpaceStr);
   });
 
-  it('should be equal', function () {
-    var re = new RegExp('[^' + whiteSpace.string + ']', 'g');
+  it('should be equal 2', function() {
+    expect.assertions(2);
+    const re = new RegExp(`[^${whiteSpace.string}]`, 'g');
     expect((whiteSpace.string + nonWhiteSpaceStr).replace(re, '')).toBe(string2018);
     expect((nonWhiteSpaceStr + whiteSpace.string).replace(re, '')).toBe(string2018);
   });
 
-  it('should be `true`', function () {
-    var re = new RegExp('^[' + whiteSpace.string + ']+$');
+  it('should be `true` 1', function() {
+    expect.assertions(1);
+    const re = new RegExp(`^[${whiteSpace.string}]+$`);
     expect(re.test(string2018)).toBe(true);
   });
 
-  it('should be `false`', function () {
-    var re = new RegExp('[' + whiteSpace.string + ']');
+  it('should be `false` 1', function() {
+    expect.assertions(1);
+    const re = new RegExp(`[${whiteSpace.string}]`);
     expect(re.test(nonWhiteSpaceStr)).toBe(false);
   });
 
-  it('should be `true`', function () {
-    var re = new RegExp('^[^' + whiteSpace.string + ']+$');
+  it('should be `true` 2', function() {
+    expect.assertions(1);
+    const re = new RegExp(`^[^${whiteSpace.string}]+$`);
     expect(re.test(nonWhiteSpaceStr)).toBe(true);
   });
 
-  it('should be `false`', function () {
-    var re = new RegExp('[^' + whiteSpace.string + ']');
+  it('should be `false` 2', function() {
+    expect.assertions(1);
+    const re = new RegExp(`[^${whiteSpace.string}]`);
     expect(re.test(string2018)).toBe(false);
   });
 });

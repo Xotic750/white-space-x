@@ -21,67 +21,71 @@
 <a name="module_white-space-x"></a>
 
 ## white-space-x
+
 List of ECMAScript white space characters.
 
-**Version**: 3.0.1  
-**Author**: Xotic750 <Xotic750@gmail.com>  
-**License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
-**Copyright**: Xotic750  
-
-* [white-space-x](#module_white-space-x)
-    * _static_
-        * [`.list`](#module_white-space-x.list) : <code>Array.&lt;CharRecord&gt;</code>
-        * [`.string`](#module_white-space-x.string) : <code>string</code>
-        * [`.string5`](#module_white-space-x.string5) : <code>string</code>
-        * [`.string2015`](#module_white-space-x.string2015) : <code>string</code>
-        * [`.string2016`](#module_white-space-x.string2016) : <code>string</code>
-        * [`.string2017`](#module_white-space-x.string2017) : <code>string</code>
-        * [`.string2018`](#module_white-space-x.string2018) : <code>string</code>
-    * _inner_
-        * [`~CharRecord`](#module_white-space-x..CharRecord) : <code>Object</code>
+- [white-space-x](#module_white-space-x)
+  - _static_
+    - [`.list`](#module_white-space-x.list) : <code>Array.&lt;CharRecord&gt;</code>
+    - [`.string`](#module_white-space-x.string) : <code>string</code>
+    - [`.string5`](#module_white-space-x.string5) : <code>string</code>
+    - [`.string2015`](#module_white-space-x.string2015) : <code>string</code>
+    - [`.string2016`](#module_white-space-x.string2016) : <code>string</code>
+    - [`.string2017`](#module_white-space-x.string2017) : <code>string</code>
+    - [`.string2018`](#module_white-space-x.string2018) : <code>string</code>
+  - _inner_
+    - [`~CharRecord`](#module_white-space-x..CharRecord) : <code>Object</code>
 
 <a name="module_white-space-x.list"></a>
 
 ### `white-space-x.list` : <code>Array.&lt;CharRecord&gt;</code>
+
 An array of the whitespace char codes, string, descriptions and language
 presence in the specifications.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
-**Example**  
+**Example**
+
 ```js
-var whiteSpace = require('white-space-x');
-whiteSpaces.list.foreach(function (item) {
+import * as whiteSpace from 'white-space-x';
+whiteSpaces.list.foreach(function(item) {
   console.log(lib.description, item.code, item.string);
 });
 ```
+
 <a name="module_white-space-x.string"></a>
 
 ### `white-space-x.string` : <code>string</code>
+
 A string of the ES2017 to ES2018 whitespace characters.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
 <a name="module_white-space-x.string5"></a>
 
 ### `white-space-x.string5` : <code>string</code>
+
 A string of the ES5 to ES2016 whitespace characters.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
 <a name="module_white-space-x.string2015"></a>
 
 ### `white-space-x.string2015` : <code>string</code>
+
 A string of the ES5 to ES2016 whitespace characters.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
 <a name="module_white-space-x.string2016"></a>
 
 ### `white-space-x.string2016` : <code>string</code>
+
 A string of the ES5 to ES2016 whitespace characters.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
-**Example**  
+**Example**
+
 ```js
-var whiteSpace = require('white-space-x');
-var characters = [
+import * as whiteSpace from 'white-space-x';
+const characters = [
   '\u0009',
   '\u000a',
   '\u000b',
@@ -107,28 +111,32 @@ var characters = [
   '\u202f',
   '\u205f',
   '\u3000',
-  '\ufeff'
+  '\ufeff',
 ];
-var ws = characters.join('');
-var re1 = new RegExp('^[' + whiteSpace.string2016 + ']+$)');
-re1.test(ws); // true
+const ws = characters.join('');
+const re1 = new RegExp('^[' + whiteSpace.string2016 + ']+$)');
+console.log(re1.test(ws)); // true
 ```
+
 <a name="module_white-space-x.string2017"></a>
 
 ### `white-space-x.string2017` : <code>string</code>
+
 A string of the ES2017 to ES2018 whitespace characters.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
 <a name="module_white-space-x.string2018"></a>
 
 ### `white-space-x.string2018` : <code>string</code>
+
 A string of the ES2017 to ES2018 whitespace characters.
 
 **Kind**: static property of [<code>white-space-x</code>](#module_white-space-x)  
-**Example**  
+**Example**
+
 ```js
-var whiteSpace = require('white-space-x');
-var characters = [
+import * as whiteSpace from 'white-space-x';
+const characters = [
   '\u0009',
   '\u000a',
   '\u000b',
@@ -153,28 +161,29 @@ var characters = [
   '\u202f',
   '\u205f',
   '\u3000',
-  '\ufeff'
+  '\ufeff',
 ];
-var ws = characters.join('');
-var re1 = new RegExp('^[' + whiteSpace.string2018 + ']+$)');
-re1.test(ws); // true
+const ws = characters.join('');
+const re1 = new RegExp('^[' + whiteSpace.string2018 + ']+$)');
+console.log(re1.test(ws)); // true
 ```
+
 <a name="module_white-space-x..CharRecord"></a>
 
 ### `white-space-x~CharRecord` : <code>Object</code>
+
 A record of a white space character.
 
 **Kind**: inner typedef of [<code>white-space-x</code>](#module_white-space-x)  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| code | <code>number</code> | The character code. |
-| description | <code>string</code> | A description of the character. |
-| es5 | <code>boolean</code> | Whether the spec lists this as a white space. |
-| es2015 | <code>boolean</code> | Whether the spec lists this as a white space. |
-| es2016 | <code>boolean</code> | Whether the spec lists this as a white space. |
-| es2017 | <code>boolean</code> | Whether the spec lists this as a white space. |
-| es2018 | <code>boolean</code> | Whether the spec lists this as a white space. |
-| string | <code>string</code> | The character string. |
-
+| Name        | Type                 | Description                                   |
+| ----------- | -------------------- | --------------------------------------------- |
+| code        | <code>number</code>  | The character code.                           |
+| description | <code>string</code>  | A description of the character.               |
+| es5         | <code>boolean</code> | Whether the spec lists this as a white space. |
+| es2015      | <code>boolean</code> | Whether the spec lists this as a white space. |
+| es2016      | <code>boolean</code> | Whether the spec lists this as a white space. |
+| es2017      | <code>boolean</code> | Whether the spec lists this as a white space. |
+| es2018      | <code>boolean</code> | Whether the spec lists this as a white space. |
+| string      | <code>string</code>  | The character string.                         |

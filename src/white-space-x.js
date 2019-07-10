@@ -1,18 +1,7 @@
 /**
- * @file List of ECMAScript white space characters.
- * @version 3.0.1
- * @author Xotic750 <Xotic750@gmail.com>
- * @copyright  Xotic750
- * @license {@link <https://opensource.org/licenses/MIT> MIT}
- * @module white-space-x
- */
-
-'use strict';
-
-/**
  * A record of a white space character.
  *
- * @typedef {Object} CharRecord
+ * @typedef {object} CharRecord
  * @property {number} code - The character code.
  * @property {string} description - A description of the character.
  * @property {boolean} es5 - Whether the spec lists this as a white space.
@@ -27,10 +16,9 @@
  * An array of the whitespace char codes, string, descriptions and language
  * presence in the specifications.
  *
- * @private
  * @type Array.<CharRecord>
  */
-var list = [
+export const list = [
   {
     code: 0x0009,
     description: 'Tab',
@@ -39,7 +27,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u0009'
+    string: '\u0009',
   },
   {
     code: 0x000a,
@@ -49,7 +37,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000a'
+    string: '\u000a',
   },
   {
     code: 0x000b,
@@ -59,7 +47,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000b'
+    string: '\u000b',
   },
   {
     code: 0x000c,
@@ -69,7 +57,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000c'
+    string: '\u000c',
   },
   {
     code: 0x000d,
@@ -79,7 +67,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u000d'
+    string: '\u000d',
   },
   {
     code: 0x0020,
@@ -89,7 +77,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u0020'
+    string: '\u0020',
   },
   /*
   {
@@ -111,7 +99,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u00a0'
+    string: '\u00a0',
   },
   {
     code: 0x1680,
@@ -121,7 +109,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u1680'
+    string: '\u1680',
   },
   {
     code: 0x180e,
@@ -131,7 +119,7 @@ var list = [
     es2016: true,
     es2017: false,
     es2018: false,
-    string: '\u180e'
+    string: '\u180e',
   },
   {
     code: 0x2000,
@@ -141,7 +129,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2000'
+    string: '\u2000',
   },
   {
     code: 0x2001,
@@ -151,7 +139,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2001'
+    string: '\u2001',
   },
   {
     code: 0x2002,
@@ -161,7 +149,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2002'
+    string: '\u2002',
   },
   {
     code: 0x2003,
@@ -171,7 +159,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2003'
+    string: '\u2003',
   },
   {
     code: 0x2004,
@@ -181,7 +169,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2004'
+    string: '\u2004',
   },
   {
     code: 0x2005,
@@ -191,7 +179,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2005'
+    string: '\u2005',
   },
   {
     code: 0x2006,
@@ -201,7 +189,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2006'
+    string: '\u2006',
   },
   {
     code: 0x2007,
@@ -211,7 +199,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2007'
+    string: '\u2007',
   },
   {
     code: 0x2008,
@@ -221,7 +209,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2008'
+    string: '\u2008',
   },
   {
     code: 0x2009,
@@ -231,7 +219,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2009'
+    string: '\u2009',
   },
   {
     code: 0x200a,
@@ -241,7 +229,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u200a'
+    string: '\u200a',
   },
   /*
   {
@@ -263,7 +251,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2028'
+    string: '\u2028',
   },
   {
     code: 0x2029,
@@ -273,7 +261,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u2029'
+    string: '\u2029',
   },
   {
     code: 0x202f,
@@ -283,7 +271,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u202f'
+    string: '\u202f',
   },
   {
     code: 0x205f,
@@ -293,7 +281,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u205f'
+    string: '\u205f',
   },
   {
     code: 0x3000,
@@ -303,7 +291,7 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\u3000'
+    string: '\u3000',
   },
   {
     code: 0xfeff,
@@ -313,14 +301,25 @@ var list = [
     es2016: true,
     es2017: true,
     es2018: true,
-    string: '\ufeff'
-  }
+    string: '\ufeff',
+  },
 ];
 
-var stringES2016 = '';
-var stringES2018 = '';
-var length = list.length;
-for (var i = 0; i < length; i += 1) {
+/**
+ * A string of the ES5 to ES2016 whitespace characters.
+ *
+ * @type string
+ */
+let stringES2016 = '';
+
+/**
+ * A string of the ES2017 to ES2018 whitespace characters.
+ *
+ * @type string
+ */
+let stringES2018 = '';
+const {length} = list;
+for (let i = 0; i < length; i += 1) {
   if (list[i].es2016) {
     stringES2016 += list[i].string;
   }
@@ -330,123 +329,9 @@ for (var i = 0; i < length; i += 1) {
   }
 }
 
-module.exports = {
-  /**
-   * An array of the whitespace char codes, string, descriptions and language
-   * presence in the specifications.
-   *
-   * @type Array.<CharRecord>
-   * @example
-   * var whiteSpace = require('white-space-x');
-   * whiteSpaces.list.foreach(function (item) {
-   *   console.log(lib.description, item.code, item.string);
-   * });
-   */
-  list: list,
-  /**
-   * A string of the ES2017 to ES2018 whitespace characters.
-   *
-   * @type string
-   */
-  string: stringES2018,
-
-  /**
-   * A string of the ES5 to ES2016 whitespace characters.
-   *
-   * @type string
-   */
-  string5: stringES2016,
-
-  /**
-   * A string of the ES5 to ES2016 whitespace characters.
-   *
-   * @type string
-   */
-  string2015: stringES2016,
-
-  /**
-   * A string of the ES5 to ES2016 whitespace characters.
-   *
-   * @type string
-   * @example
-   * var whiteSpace = require('white-space-x');
-   * var characters = [
-   *   '\u0009',
-   *   '\u000a',
-   *   '\u000b',
-   *   '\u000c',
-   *   '\u000d',
-   *   '\u0020',
-   *   '\u00a0',
-   *   '\u1680',
-   *   '\u180e',
-   *   '\u2000',
-   *   '\u2001',
-   *   '\u2002',
-   *   '\u2003',
-   *   '\u2004',
-   *   '\u2005',
-   *   '\u2006',
-   *   '\u2007',
-   *   '\u2008',
-   *   '\u2009',
-   *   '\u200a',
-   *   '\u2028',
-   *   '\u2029',
-   *   '\u202f',
-   *   '\u205f',
-   *   '\u3000',
-   *   '\ufeff'
-   * ];
-   * var ws = characters.join('');
-   * var re1 = new RegExp('^[' + whiteSpace.string2016 + ']+$)');
-   * re1.test(ws); // true
-   */
-  string2016: stringES2016,
-
-  /**
-   * A string of the ES2017 to ES2018 whitespace characters.
-   *
-   * @type string
-   */
-  string2017: stringES2018,
-
-  /**
-   * A string of the ES2017 to ES2018 whitespace characters.
-   *
-   * @type string
-   * @example
-   * var whiteSpace = require('white-space-x');
-   * var characters = [
-   *   '\u0009',
-   *   '\u000a',
-   *   '\u000b',
-   *   '\u000c',
-   *   '\u000d',
-   *   '\u0020',
-   *   '\u00a0',
-   *   '\u1680',
-   *   '\u2000',
-   *   '\u2001',
-   *   '\u2002',
-   *   '\u2003',
-   *   '\u2004',
-   *   '\u2005',
-   *   '\u2006',
-   *   '\u2007',
-   *   '\u2008',
-   *   '\u2009',
-   *   '\u200a',
-   *   '\u2028',
-   *   '\u2029',
-   *   '\u202f',
-   *   '\u205f',
-   *   '\u3000',
-   *   '\ufeff'
-   * ];
-   * var ws = characters.join('');
-   * var re1 = new RegExp('^[' + whiteSpace.string2018 + ']+$)');
-   * re1.test(ws); // true
-   */
-  string2018: stringES2018
-};
+export const string = stringES2018;
+export const string5 = stringES2016;
+export const string2015 = stringES2016;
+export const string2016 = stringES2016;
+export const string2017 = stringES2018;
+export const string2018 = stringES2018;
