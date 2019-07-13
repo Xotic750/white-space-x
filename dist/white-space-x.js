@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-present",
-  "date": "2019-07-12T14:28:37.033Z",
+  "date": "2019-07-13T02:07:12.865Z",
   "describe": "",
   "description": "List of ECMAScript white space characters.",
   "file": "white-space-x.js",
   "hash": "695bf73436b64dc2b70c",
   "license": "MIT",
-  "version": "4.0.2"
+  "version": "4.0.3"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
