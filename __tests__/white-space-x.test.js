@@ -308,7 +308,6 @@ const nonWhiteSpaceStr = new Array(0xfeff).fill().reduce(function(str, u, index)
     return item.code === index;
   };
 
-  /* eslint-disable-next-line compat/compat */
   return list.some(includes) ? str : str + String.fromCodePoint(index);
 }, '');
 
