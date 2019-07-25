@@ -1,6 +1,6 @@
 {
   "name": "white-space-x",
-  "version": "4.0.19",
+  "version": "4.0.20",
   "description": "List of ECMAScript white space characters.",
   "homepage": "https://github.com/Xotic750/white-space-x",
   "author": {
@@ -62,7 +62,7 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/runtime": "^7.5.5",
-    "@prorenata/eslint-config-vue": "^1.13.11",
+    "@prorenata/eslint-config-vue": "^1.13.12",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
     "babel-core": "^7.0.0-0",
