@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-present",
-  "date": "2019-07-27T21:00:06.414Z",
+  "date": "2019-07-29T18:36:08.683Z",
   "describe": "",
   "description": "List of ECMAScript white space characters.",
   "file": "white-space-x.js",
