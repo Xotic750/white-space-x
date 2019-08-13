@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-present",
-  "date": "2019-08-13T07:54:13.019Z",
+  "date": "2019-08-13T10:59:17.708Z",
   "describe": "",
   "description": "List of ECMAScript white space characters.",
   "file": "white-space-x.js",
-  "hash": "da0a7243b971861a35b8",
+  "hash": "0c8e0655021dfc71419b",
   "license": "MIT",
   "version": "4.0.24"
 }
@@ -23,31 +23,47 @@
 })((function () {
   'use strict';
 
-  /* eslint-disable-next-line no-var */
-  var objectPrototype = {}.constructor.prototype;
-  /* eslint-disable-next-line no-var,prefer-destructuring */
-  var defineProperty = objectPrototype.defineProperty;
-  /* eslint-disable-next-line no-var */
+  var ObjectCtr = {}.constructor;
+  var objectPrototype = ObjectCtr.prototype;
+  var defineProperty = ObjectCtr.defineProperty;
   var $globalThis;
+  var getGlobalFallback = function() {
+    if (typeof self !== 'undefined') {
+      return self;
+    }
+
+    if (typeof window !== 'undefined') {
+      return window;
+    }
+
+    if (typeof global !== 'undefined') {
+      return global;
+    }
+
+    return void 0;
+  };
+
+  var returnThis = function() {
+    return this;
+  };
 
   try {
-    defineProperty(objectPrototype, '$$globalThis$$', {
-      /* eslint-disable-next-line object-shorthand */
-      get: function() {
-        return this;
-      },
-      /* eslint-disable-next-line prettier/prettier */
-      configurable: true
-    });
+    if (defineProperty) {
+      defineProperty(objectPrototype, '$$globalThis$$', {
+        get: returnThis,
+        configurable: true
+      });
+    } else {
+      objectPrototype.__defineGetter__('$$globalThis$$', returnThis);
+    }
 
-    /* eslint-disable-next-line no-undef */
-    $globalThis = typeof $$globalThis$$ === 'undefined' ? self || window : $$globalThis$$;
+    $globalThis = typeof $$globalThis$$ === 'undefined' ? getGlobalFallback() : $$globalThis$$;
 
     delete objectPrototype.$$globalThis$$;
 
     return $globalThis;
   } catch (error) {
-    return self || window;
+    return getGlobalFallback();
   }
 }()), function() {
 return /******/ (function(modules) { // webpackBootstrap
